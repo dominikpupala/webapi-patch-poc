@@ -213,6 +213,22 @@ csharp_preserve_single_line_statements = true
 
 # Naming rules
 
+dotnet_naming_rule.constants_should_be_pascal_case.severity = warning
+dotnet_naming_rule.constants_should_be_pascal_case.symbols = constants
+dotnet_naming_rule.constants_should_be_pascal_case.style = pascal_case
+
+dotnet_naming_rule.public_static_fields_should_be_pascal_case.severity = warning
+dotnet_naming_rule.public_static_fields_should_be_pascal_case.symbols = public_static_fields
+dotnet_naming_rule.public_static_fields_should_be_pascal_case.style = pascal_case
+
+dotnet_naming_rule.private_static_fields_should_be_underscore_camelcase.severity = warning
+dotnet_naming_rule.private_static_fields_should_be_underscore_camelcase.symbols = private_static_fields
+dotnet_naming_rule.private_static_fields_should_be_underscore_camelcase.style = underscore_camelcase
+
+dotnet_naming_rule.private_fields_should_be_underscore_camelcase.severity = warning
+dotnet_naming_rule.private_fields_should_be_underscore_camelcase.symbols = private_fields
+dotnet_naming_rule.private_fields_should_be_underscore_camelcase.style = underscore_camelcase
+
 dotnet_naming_rule.interface_should_be_begins_with_i.severity = suggestion
 dotnet_naming_rule.interface_should_be_begins_with_i.symbols = interface
 dotnet_naming_rule.interface_should_be_begins_with_i.style = begins_with_i
@@ -227,6 +243,21 @@ dotnet_naming_rule.non_field_members_should_be_pascal_case.style = pascal_case
 
 # Symbol specifications
 
+dotnet_naming_symbols.constants.applicable_kinds = field
+dotnet_naming_symbols.constants.required_modifiers = const
+
+dotnet_naming_symbols.public_static_fields.applicable_kinds = field
+dotnet_naming_symbols.public_static_fields.applicable_accessibilities = public, protected, internal, protected_internal
+dotnet_naming_symbols.public_static_fields.required_modifiers = static
+
+dotnet_naming_symbols.private_static_fields.applicable_kinds = field
+dotnet_naming_symbols.private_static_fields.applicable_accessibilities = private
+dotnet_naming_symbols.private_static_fields.required_modifiers = static
+
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+dotnet_naming_symbols.private_fields.required_modifiers =
+
 dotnet_naming_symbols.interface.applicable_kinds = interface
 dotnet_naming_symbols.interface.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
 dotnet_naming_symbols.interface.required_modifiers = 
@@ -240,6 +271,11 @@ dotnet_naming_symbols.non_field_members.applicable_accessibilities = public, int
 dotnet_naming_symbols.non_field_members.required_modifiers = 
 
 # Naming styles
+
+dotnet_naming_style.underscore_camelcase.required_prefix = _
+dotnet_naming_style.underscore_camelcase.required_suffix =
+dotnet_naming_style.underscore_camelcase.word_separator =
+dotnet_naming_style.underscore_camelcase.capitalization = camel_case
 
 dotnet_naming_style.pascal_case.required_prefix = 
 dotnet_naming_style.pascal_case.required_suffix = 
