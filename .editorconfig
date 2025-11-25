@@ -294,3 +294,10 @@ dotnet_diagnostic.IDE0011.severity = warning
 
 # Fix formatting (includes brace placement)
 dotnet_diagnostic.IDE0055.severity = warning
+
+# Do not directly await a Task (ConfigureAwait)
+dotnet_diagnostic.CA2007.severity = none
+
+# LoggerMessage delegates for high-performance logging (source generating LoggerMessageAtrtibute).
+# TODO: Consider this for hot paths
+dotnet_diagnostic.CA1848.severity = none
