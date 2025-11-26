@@ -1,6 +1,6 @@
-using System.Data;
 using Dapper;
 using Microsoft.Data.SqlClient;
+using System.Data;
 
 namespace WebApiPatchPoC.Data;
 
