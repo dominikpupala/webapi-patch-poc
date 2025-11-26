@@ -1,3 +1,5 @@
+using WebApiPatchPoC.Data;
+
 namespace WebApiPatchPoC;
 
 internal static class ConfigureServices
@@ -7,6 +9,13 @@ internal static class ConfigureServices
         public void AddServices()
         {
             builder.Services.AddOpenApi();
+
+            builder.AddDatabase();
+        }
+
+        private void AddDatabase()
+        {
+            builder.Services.AddSingleton<IDbConnectionFactory, SqlConnectionFactory>();
         }
     }
 }
