@@ -6,12 +6,7 @@ builder.AddServices();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-app.MapOpenApi();
-app.UseSwaggerUI(options =>
-{
-    options.SwaggerEndpoint("/openapi/v1.json", "v1");
-});
+app.Configure();
 
 #pragma warning disable CA1852, CA5394 // Temporary code
 var summaries = new[]
