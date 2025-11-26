@@ -301,3 +301,9 @@ dotnet_diagnostic.CA2007.severity = none
 # LoggerMessage delegates for high-performance logging (source generating LoggerMessageAtrtibute).
 # TODO: Consider this for hot paths
 dotnet_diagnostic.CA1848.severity = none
+
+#### Overrides
+
+# Aanalyzer has issues with new extension syntax
+# https://github.com/dotnet/sdk/issues/51683
+dotnet_diagnostic.CA1515.severity = none
