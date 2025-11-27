@@ -1,19 +1,39 @@
 @WebApiPatchPoC_HostAddress = http://localhost:5006
 
 ### Get all products
-GET {{WebApiPatchPoC_HostAddress}}/api/products
+GET {{WebApiPatchPoC_HostAddress}}/api/v1/products
 Accept: application/json
 
 ### Get product by SKU - Success
-GET {{WebApiPatchPoC_HostAddress}}/api/products/PC-MOUSE-001
+GET {{WebApiPatchPoC_HostAddress}}/api/v1/products/PC-MOUSE-001
 Accept: application/json
 
 ### Get product by SKU - Not Found
-GET {{WebApiPatchPoC_HostAddress}}/api/products/INVALID-SKU
+GET {{WebApiPatchPoC_HostAddress}}/api/v1/products/INVALID-SKU
 Accept: application/json
 
 ### Get product by SKU - Invalid Format (should fail validation)
-GET {{WebApiPatchPoC_HostAddress}}/api/products/INVALID-SKÙ
+GET {{WebApiPatchPoC_HostAddress}}/api/v1/products/INVALID-SKï¿½
+Accept: application/json
+
+### Get products paginated - First page (default parameters)
+GET {{WebApiPatchPoC_HostAddress}}/api/v2/products?pageNumber=1&pageSize=10
+Accept: application/json
+
+### Get products paginated - Custom page size
+GET {{WebApiPatchPoC_HostAddress}}/api/v2/products?pageNumber=1&pageSize=25
+Accept: application/json
+
+### Get products paginated - Invalid page number (should fail validation)
+GET {{WebApiPatchPoC_HostAddress}}/api/v2/products?pageNumber=0&pageSize=100
+Accept: application/json
+
+### Get products paginated - Invalid page size too small (should fail validation)
+GET {{WebApiPatchPoC_HostAddress}}/api/v2/products?pageNumber=1&pageSize=0
+Accept: application/json
+
+### Get products paginated - Invalid page size too large (should fail validation)
+GET {{WebApiPatchPoC_HostAddress}}/api/v2/products?pageNumber=1&pageSize=101
 Accept: application/json
 
 ###

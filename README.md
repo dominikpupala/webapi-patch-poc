@@ -12,8 +12,9 @@ A small proof-of-concept Web API demonstrating PATCH endpoints with validation a
 ## Features
 
 ### Products API
-- **GET** `/api/products` - Retrieve all products
-- **GET** `/api/products/{sku}` - Retrieve a product by SKU
+- **GET** `/api/v1/products` - Retrieve all products
+- **GET** `/api/v2/products` - Retrieve all products paginated
+- **GET** `/api/v1/products/{sku}` - Retrieve a product by SKU
 
 ## Requirements
 

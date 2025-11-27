@@ -6,9 +6,23 @@ internal static class ConfigureApp
     {
         public void Configure()
         {
-            app.MapOpenApi();
-            app.UseSwaggerUI(options => options.SwaggerEndpoint("/openapi/v1.json", "v1"));
+            app.UseVersionedApi();
             app.MapEndpoints();
+        }
+
+        public WebApplication UseVersionedApi()
+        {
+            app.MapOpenApi();
+            app.UseSwaggerUI(options =>
+            {
+                foreach (var version in ApiVersions.Versions.Values)
+                {
+                    var docName = version.ToDocumentName;
+                    options.SwaggerEndpoint($"/openapi/{docName}.json", docName.ToUpperInvariant());
+                }
+            });
+
+            return app;
         }
     }
 }

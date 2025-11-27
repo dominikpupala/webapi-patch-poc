@@ -1,5 +1,7 @@
+using Asp.Versioning.Builder;
 using WebApiPatchPoC.Features.Products.GetProductBySku;
 using WebApiPatchPoC.Features.Products.GetProducts;
+using WebApiPatchPoC.Features.Products.GetProductsPaginated;
 
 namespace WebApiPatchPoC;
 
@@ -9,9 +11,27 @@ internal static class Endpoints
     {
         public void MapEndpoints()
         {
-            var endpoints = app.MapGroup("api/");
+            var versionSet = app.CreateVersionSet();
+
+            var endpoints = app
+                .MapGroup("api/v{version:apiVersion}")
+                .WithApiVersionSet(versionSet);
 
             endpoints.MapProductsEndpoints();
+        }
+
+        public ApiVersionSet CreateVersionSet()
+        {
+            var versionSetBuilder = app.NewApiVersionSet();
+
+            foreach (var version in ApiVersions.Versions.Values)
+            {
+                versionSetBuilder.HasApiVersion(version);
+            }
+
+            return versionSetBuilder
+                .ReportApiVersions()
+                .Build();
         }
     }
 
@@ -25,6 +45,7 @@ internal static class Endpoints
 
             productsGroup.MapGetProductBySku();
             productsGroup.MapGetProducts();
+            productsGroup.MapGetProductsPaginated();
         }
     }
 }
