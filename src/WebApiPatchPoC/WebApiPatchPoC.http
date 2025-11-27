@@ -13,11 +13,7 @@ GET {{WebApiPatchPoC_HostAddress}}/api/products/INVALID-SKU
 Accept: application/json
 
 ### Get product by SKU - Invalid Format (should fail validation)
-GET {{WebApiPatchPoC_HostAddress}}/api/products/INVALID-SKÅ®
-Accept: application/json
-
-###
-GET {{WebApiPatchPoC_HostAddress}}/api/weatherforecast/
+GET {{WebApiPatchPoC_HostAddress}}/api/products/INVALID-SKÙ
 Accept: application/json
 
 ###
