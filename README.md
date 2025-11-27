@@ -6,9 +6,13 @@ A small proof-of-concept Web API demonstrating PATCH endpoints with validation a
 
 - Basic project setup with OpenAPI/SwaggerUI integration
 - Extension methods for service and app configuration
-- Temporary weather forecast endpoint (placeholder)
 - Automatic initialization and seeding for MS SQL database
 	- 50 sample products seeded on startup
+
+## Features
+
+### Products API
+- **GET** `/api/products` - Retrieve all products
 
 ## Requirements
 
@@ -25,3 +29,15 @@ A small proof-of-concept Web API demonstrating PATCH endpoints with validation a
 5. Browse to `/swagger` for API documentation
 
 See [DATABASE_SETUP.md](DATABASE_SETUP.md) for detailed database setup instructions
+
+## Running the Tests
+
+### Command Line
+```bash
+# Run all tests
+dotnet test
+```
+
+### Visual Studio
+- Open **Test Explorer** (Test > Test Explorer)
+- Click "Run All Tests" or right-click individual tests to run them
