@@ -5,6 +5,7 @@ using WebApiPatchPoC.Features.Products.Common;
 using WebApiPatchPoC.Features.Products.GetProductBySku;
 using WebApiPatchPoC.Features.Products.GetProducts;
 using WebApiPatchPoC.Features.Products.GetProductsPaginated;
+using WebApiPatchPoC.Features.Products.PatchProduct;
 
 namespace WebApiPatchPoC;
 
@@ -34,6 +35,7 @@ internal static class ConfigureServices
             builder.Services.AddScoped<GetProductBySkuHandler>();
             builder.Services.AddScoped<GetProductsHandler>();
             builder.Services.AddScoped<GetProductsPaginatedHandler>();
+            builder.Services.AddScoped<PatchProductHandler>();
         }
     }
 
