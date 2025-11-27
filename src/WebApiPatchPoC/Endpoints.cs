@@ -1,3 +1,4 @@
+using WebApiPatchPoC.Features.Products.GetProductBySku;
 using WebApiPatchPoC.Features.Products.GetProducts;
 
 namespace WebApiPatchPoC;
@@ -22,6 +23,7 @@ internal static class Endpoints
                 .MapGroup("products")
                 .WithTags("Products");
 
+            productsGroup.MapGetProductBySku();
             productsGroup.MapGetProducts();
         }
     }

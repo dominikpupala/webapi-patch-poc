@@ -1,5 +1,7 @@
+using FluentValidation;
 using WebApiPatchPoC.Data;
 using WebApiPatchPoC.Features.Products.Common;
+using WebApiPatchPoC.Features.Products.GetProductBySku;
 using WebApiPatchPoC.Features.Products.GetProducts;
 
 namespace WebApiPatchPoC;
@@ -11,6 +13,7 @@ internal static class ConfigureServices
         public void AddServices()
         {
             builder.Services.AddOpenApi();
+            builder.Services.AddValidatorsFromAssemblyContaining<Program>(ServiceLifetime.Singleton, includeInternalTypes: true);
 
             builder.AddDatabase();
             builder.AddFeatures();
@@ -25,6 +28,7 @@ internal static class ConfigureServices
         {
             // products
             builder.Services.AddScoped<IProductReadService, ProductReadService>();
+            builder.Services.AddScoped<GetProductBySkuHandler>();
             builder.Services.AddScoped<GetProductsHandler>();
         }
     }

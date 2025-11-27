@@ -25,4 +25,33 @@ internal sealed class ProductReadService(IDbConnectionFactory connectionFactory)
 
         return [.. products];
     }
+
+    public async Task<ProductReadModel?> GetProductBySku(string sku)
+    {
+        using var connection = await connectionFactory.Create();
+
+        const string sql = """
+            SELECT
+                Sku,
+                Name,
+                ImgUri,
+                Price,
+                Description
+            FROM dbo.Products
+            WHERE Sku = @Sku;
+            """;
+
+        var product = await connection.QuerySingleOrDefaultAsync<ProductReadModel>(sql, new
+        {
+            // Use DbString with IsAnsi when filtering on VARCHAR column to avoid implicit conversion.
+            Sku = new DbString
+            {
+                Value = sku,
+                IsAnsi = true,
+                Length = 50
+            }
+        });
+
+        return product;
+    }
 }
