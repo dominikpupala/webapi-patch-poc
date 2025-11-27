@@ -1,3 +1,5 @@
+using WebApiPatchPoC.Features.Products.GetProducts;
+
 namespace WebApiPatchPoC;
 
 internal static class Endpoints
@@ -8,12 +10,22 @@ internal static class Endpoints
         {
             var endpoints = app.MapGroup("api/");
 
+            endpoints.MapProductsEndpoints();
             endpoints.MapTemporaryEndpoints();
         }
     }
 
     extension(IEndpointRouteBuilder endpoints)
     {
+        public void MapProductsEndpoints()
+        {
+            var productsGroup = endpoints
+                .MapGroup("products")
+                .WithTags("Products");
+
+            productsGroup.MapGetProducts();
+        }
+
         public void MapTemporaryEndpoints()
         {
             var summaries = new[]
