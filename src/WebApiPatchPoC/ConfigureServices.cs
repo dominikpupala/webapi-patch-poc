@@ -15,6 +15,8 @@ internal static class ConfigureServices
     {
         public void AddServices()
         {
+            builder.Services.AddProblemDetails();
+            builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
             builder.Services.AddVersionedApiServices();
             builder.Services.AddValidatorsFromAssemblyContaining<Program>(ServiceLifetime.Singleton, includeInternalTypes: true);
 
