@@ -1,5 +1,6 @@
 using Dapper;
 using WebApiPatchPoC;
+using WebApiPatchPoC.Common;
 using WebApiPatchPoC.Data;
 
 namespace WebApiPatchPoC.Features.Products.Common;
@@ -53,5 +54,42 @@ internal sealed class ProductReadService(IDbConnectionFactory connectionFactory)
         });
 
         return product;
+    }
+
+    public async Task<PaginatedResult<ProductReadModel>> GetProductsPaginated(int pageNumber, int pageSize)
+    {
+        using var connection = await connectionFactory.Create();
+
+        const string countSql = """
+            SELECT COUNT(*) FROM dbo.Products;
+            """;
+
+        const string dataSql = """
+            SELECT
+                Sku,
+                Name,
+                ImgUri,
+                Price,
+                Description
+            FROM dbo.Products
+            ORDER BY Name
+            OFFSET @Offset ROWS
+            FETCH NEXT @PageSize ROWS ONLY;
+            """;
+
+        var totalCount = await connection.ExecuteScalarAsync<int>(countSql);
+
+        var offset = (pageNumber - 1) * pageSize;
+        var products = await connection.QueryAsync<ProductReadModel>(dataSql, new
+        {
+            Offset = offset,
+            PageSize = pageSize
+        });
+
+        return new PaginatedResult<ProductReadModel>(
+            [.. products],
+            totalCount,
+            pageNumber,
+            pageSize);
     }
 }
