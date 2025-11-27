@@ -15,6 +15,7 @@ A small proof-of-concept Web API demonstrating PATCH endpoints with validation a
 - **GET** `/api/v1/products` - Retrieve all products
 - **GET** `/api/v2/products` - Retrieve all products paginated
 - **GET** `/api/v1/products/{sku}` - Retrieve a product by SKU
+- **PATCH** `/api/v1/products/{sku}` - Partially update a product using JSON Merge Patch (RFC 7396)
 
 ## Requirements
 

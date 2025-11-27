@@ -6,6 +6,7 @@ internal static class ConfigureApp
     {
         public void Configure()
         {
+            app.UseExceptionHandler();
             app.UseVersionedApi();
             app.MapEndpoints();
         }
