@@ -29,6 +29,7 @@ internal static class ConfigureServices
         private void AddFeatures()
         {
             // products
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<IProductReadService, ProductReadService>();
             builder.Services.AddScoped<GetProductBySkuHandler>();
             builder.Services.AddScoped<GetProductsHandler>();
