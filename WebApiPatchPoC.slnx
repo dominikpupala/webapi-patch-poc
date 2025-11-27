@@ -3,4 +3,5 @@
     <File Path=".editorconfig" />
   </Folder>
   <Project Path="src/WebApiPatchPoC/WebApiPatchPoC.csproj" />
+  <Project Path="tests/WebApiPatchPoC.Tests/WebApiPatchPoC.Tests.csproj" Id="76a607bf-96d1-49c3-8d48-34bafc77e1fd" />
 </Solution>
