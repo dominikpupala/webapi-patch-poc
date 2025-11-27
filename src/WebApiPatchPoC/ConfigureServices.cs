@@ -1,3 +1,7 @@
+using WebApiPatchPoC.Data;
+using WebApiPatchPoC.Features.Products.Common;
+using WebApiPatchPoC.Features.Products.GetProducts;
+
 namespace WebApiPatchPoC;
 
 internal static class ConfigureServices
@@ -7,6 +11,21 @@ internal static class ConfigureServices
         public void AddServices()
         {
             builder.Services.AddOpenApi();
+
+            builder.AddDatabase();
+            builder.AddFeatures();
+        }
+
+        private void AddDatabase()
+        {
+            builder.Services.AddSingleton<IDbConnectionFactory, SqlConnectionFactory>();
+        }
+
+        private void AddFeatures()
+        {
+            // products
+            builder.Services.AddScoped<IProductReadService, ProductReadService>();
+            builder.Services.AddScoped<GetProductsHandler>();
         }
     }
 }

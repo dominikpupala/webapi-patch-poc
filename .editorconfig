@@ -307,3 +307,7 @@ dotnet_diagnostic.CA1848.severity = none
 # Aanalyzer has issues with new extension syntax
 # https://github.com/dotnet/sdk/issues/51683
 dotnet_diagnostic.CA1515.severity = none
+
+# Handler classes are instantiated by DI container
+[**/Features/**/*Handler.cs]
+dotnet_diagnostic.CA1812.severity = none
