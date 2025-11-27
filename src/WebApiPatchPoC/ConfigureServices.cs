@@ -1,3 +1,4 @@
+using FluentValidation;
 using WebApiPatchPoC.Data;
 using WebApiPatchPoC.Features.Products.Common;
 using WebApiPatchPoC.Features.Products.GetProductBySku;
@@ -12,6 +13,7 @@ internal static class ConfigureServices
         public void AddServices()
         {
             builder.Services.AddOpenApi();
+            builder.Services.AddValidatorsFromAssemblyContaining<Program>(ServiceLifetime.Singleton, includeInternalTypes: true);
 
             builder.AddDatabase();
             builder.AddFeatures();
