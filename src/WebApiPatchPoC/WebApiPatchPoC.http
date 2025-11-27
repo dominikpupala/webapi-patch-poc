@@ -36,4 +36,58 @@ Accept: application/json
 GET {{WebApiPatchPoC_HostAddress}}/api/v2/products?pageNumber=1&pageSize=101
 Accept: application/json
 
+### Patch product - Update description (Success - only implemented field)
+PATCH {{WebApiPatchPoC_HostAddress}}/api/v1/products/PC-MOUSE-001
+Content-Type: application/json
+
+{
+  "description": "Updated description for the wireless mouse"
+}
+
+### Patch product - Clear description (set to null)
+PATCH {{WebApiPatchPoC_HostAddress}}/api/v1/products/PC-MOUSE-001
+Content-Type: application/json
+
+{
+  "description": null
+}
+
+### Patch product - Update name (Should return 501 Not Implemented)
+PATCH {{WebApiPatchPoC_HostAddress}}/api/v1/products/PC-MOUSE-001
+Content-Type: application/json
+
+{
+  "name": "New Mouse Name"
+}
+
+### Patch product - Invalid price (null) (Should return 400 validation error)
+PATCH {{WebApiPatchPoC_HostAddress}}/api/v1/products/PC-MOUSE-001
+Content-Type: application/json
+
+{
+  "price": null
+}
+
+### Patch product - Invalid JSON (Should return 400 Problem Details)
+PATCH {{WebApiPatchPoC_HostAddress}}/api/v1/products/PC-MOUSE-001
+Content-Type: application/json
+
+{
+  "description": "Missing closing quote
+}
+
+### Patch product - Not an object (Should return 400 Problem Details)
+PATCH {{WebApiPatchPoC_HostAddress}}/api/v1/products/PC-MOUSE-001
+Content-Type: application/json
+
+"just a string"
+
+### Patch product - Product not found (Should return 404)
+PATCH {{WebApiPatchPoC_HostAddress}}/api/v1/products/INVALID-SKU
+Content-Type: application/json
+
+{
+  "description": "This product does not exist"
+}
+
 ###
