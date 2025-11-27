@@ -4,6 +4,18 @@
 GET {{WebApiPatchPoC_HostAddress}}/api/products
 Accept: application/json
 
+### Get product by SKU - Success
+GET {{WebApiPatchPoC_HostAddress}}/api/products/PC-MOUSE-001
+Accept: application/json
+
+### Get product by SKU - Not Found
+GET {{WebApiPatchPoC_HostAddress}}/api/products/INVALID-SKU
+Accept: application/json
+
+### Get product by SKU - Invalid Format (should fail validation)
+GET {{WebApiPatchPoC_HostAddress}}/api/products/INVALID-SKŮ
+Accept: application/json
+
 ###
 GET {{WebApiPatchPoC_HostAddress}}/api/weatherforecast/
 Accept: application/json
