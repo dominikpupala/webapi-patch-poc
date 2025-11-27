@@ -1,5 +1,6 @@
 using WebApiPatchPoC.Data;
 using WebApiPatchPoC.Features.Products.Common;
+using WebApiPatchPoC.Features.Products.GetProducts;
 
 namespace WebApiPatchPoC;
 
@@ -24,6 +25,7 @@ internal static class ConfigureServices
         {
             // products
             builder.Services.AddScoped<IProductReadService, ProductReadService>();
+            builder.Services.AddScoped<GetProductsHandler>();
         }
     }
 }
