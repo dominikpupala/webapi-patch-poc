@@ -1,19 +1,19 @@
 @WebApiPatchPoC_HostAddress = http://localhost:5006
 
 ### Get all products
-GET {{WebApiPatchPoC_HostAddress}}/api/products
+GET {{WebApiPatchPoC_HostAddress}}/api/v1/products
 Accept: application/json
 
 ### Get product by SKU - Success
-GET {{WebApiPatchPoC_HostAddress}}/api/products/PC-MOUSE-001
+GET {{WebApiPatchPoC_HostAddress}}/api/v1/products/PC-MOUSE-001
 Accept: application/json
 
 ### Get product by SKU - Not Found
-GET {{WebApiPatchPoC_HostAddress}}/api/products/INVALID-SKU
+GET {{WebApiPatchPoC_HostAddress}}/api/v1/products/INVALID-SKU
 Accept: application/json
 
 ### Get product by SKU - Invalid Format (should fail validation)
-GET {{WebApiPatchPoC_HostAddress}}/api/products/INVALID-SKÙ
+GET {{WebApiPatchPoC_HostAddress}}/api/v1/products/INVALID-SKï¿½
 Accept: application/json
 
 ###
