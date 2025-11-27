@@ -16,4 +16,24 @@ Accept: application/json
 GET {{WebApiPatchPoC_HostAddress}}/api/v1/products/INVALID-SK�
 Accept: application/json
 
+### Get products paginated - First page (default parameters)
+GET {{WebApiPatchPoC_HostAddress}}/api/v2/products?pageNumber=1&pageSize=10
+Accept: application/json
+
+### Get products paginated - Custom page size
+GET {{WebApiPatchPoC_HostAddress}}/api/v2/products?pageNumber=1&pageSize=25
+Accept: application/json
+
+### Get products paginated - Invalid page number (should fail validation)
+GET {{WebApiPatchPoC_HostAddress}}/api/v2/products?pageNumber=0&pageSize=100
+Accept: application/json
+
+### Get products paginated - Invalid page size too small (should fail validation)
+GET {{WebApiPatchPoC_HostAddress}}/api/v2/products?pageNumber=1&pageSize=0
+Accept: application/json
+
+### Get products paginated - Invalid page size too large (should fail validation)
+GET {{WebApiPatchPoC_HostAddress}}/api/v2/products?pageNumber=1&pageSize=101
+Accept: application/json
+
 ###

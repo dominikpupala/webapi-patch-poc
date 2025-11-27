@@ -1,6 +1,7 @@
 using Asp.Versioning.Builder;
 using WebApiPatchPoC.Features.Products.GetProductBySku;
 using WebApiPatchPoC.Features.Products.GetProducts;
+using WebApiPatchPoC.Features.Products.GetProductsPaginated;
 
 namespace WebApiPatchPoC;
 
@@ -44,6 +45,7 @@ internal static class Endpoints
 
             productsGroup.MapGetProductBySku();
             productsGroup.MapGetProducts();
+            productsGroup.MapGetProductsPaginated();
         }
     }
 }
